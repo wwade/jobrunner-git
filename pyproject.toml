@@ -47,7 +47,7 @@ packages = [{include = "jobrunner_git"}]
 python = "^3.9"
 
 [tool.poetry.group.dev.dependencies]
-black = "24.3.0"
+black = "24.10.0"
 flake8 = "7.0.0"
 isort = "5.13.2"
 modernize = {version = "0.8.0", python = ">=3.9,<4.0"}
