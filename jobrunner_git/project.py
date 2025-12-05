@@ -1,11 +1,12 @@
+from __future__ import annotations
+
 import logging
 from subprocess import DEVNULL, CalledProcessError, check_output
-from typing import Optional, Tuple
 
 logger = logging.getLogger(__name__)
 
 
-def run(*args: str) -> Optional[str]:
+def run(*args: str) -> str | None:
     try:
         return check_output(args, encoding="utf-8", stderr=DEVNULL).strip()
     except CalledProcessError as err:
@@ -13,7 +14,7 @@ def run(*args: str) -> Optional[str]:
         return None
 
 
-def workspaceProject() -> Tuple[str, bool]:
+def workspaceProject() -> tuple[str, bool]:
     head = run("git", "rev-parse", "HEAD")
     if not head:
         raise NotImplementedError
