@@ -26,16 +26,12 @@ jobs:
       run: uv sync --group dev
     - name: Lint with mypy
       run: uv run mypy --strict .
-    - name: Lint with isort
-      if: matrix.python-version != '3.9'
-      run: uv run isort --diff --check-only $(git ls-files "*.py")
-    - name: Check formatting
-      run: uv run black --diff --check $(git ls-files "*.py")
+    - name: Lint with ruff
+      run: uv run ruff check $(git ls-files "*.py")
+    - name: Check formatting with ruff
+      run: uv run ruff format --check $(git ls-files "*.py")
     - name: Test with pytest
       run: uv run pytest
-    - name: Lint with pylint
-      if: matrix.python-version != '3.9'
-      run: uv run pylint $(git ls-files '*.py')
 
   all-testing:
     runs-on: ubuntu-latest

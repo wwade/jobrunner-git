@@ -40,16 +40,18 @@ jobrunner_git_project = "jobrunner_git.project"
 
 [dependency-groups]
 dev = [
-    "black==26.3.1; python_version >= '3.10'",
-    "black==25.11.0; python_version == '3.9'",
-    "flake8==7.3.0",
-    "isort==7.0.0; python_version >= '3.10'",
     "modernize==0.8.0",
     "mypy==1.19.1",
-    "pylint==4.0.5; python_version >= '3.10'",
     "pytest>=8.0,<9; python_version == '3.9'",
     "pytest>=9.0.1; python_version >= '3.10'",
+    "ruff>=0.9.0",
 ]
 
 [tool.hatch.version]
 source = "vcs"
+
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "PL"]

@@ -3,7 +3,6 @@ set -xe
 FILESPEC=(
    jobrunner_git
 )
-isort --atomic "${FILESPEC[@]}"
-black "${FILESPEC[@]}"
-pylint "${FILESPEC[@]}"
+ruff check --fix "${FILESPEC[@]}"
+ruff format "${FILESPEC[@]}"
 mypy --strict "${FILESPEC[@]}"
