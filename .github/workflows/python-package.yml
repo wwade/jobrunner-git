@@ -25,13 +25,13 @@ jobs:
     - name: Install dependencies
       run: uv sync --group dev
     - name: Lint with mypy
-      run: uv run mypy --strict .
+      run: make mypy
     - name: Lint with ruff
-      run: uv run ruff check $(git ls-files "*.py")
+      run: make lint
     - name: Check formatting with ruff
-      run: uv run ruff format --check $(git ls-files "*.py")
+      run: make format-check
     - name: Test with pytest
-      run: uv run pytest
+      run: make test
 
   all-testing:
     runs-on: ubuntu-latest
