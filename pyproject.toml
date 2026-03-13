@@ -1,6 +1,6 @@
 [build-system]
-requires = ["poetry-core>=2.0.0", "poetry-dynamic-versioning>=1.0.0,<2.0.0"]
-build-backend = "poetry_dynamic_versioning.backend"
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
 
 [project]
 name = "jobrunner-git"
@@ -29,8 +29,7 @@ classifiers = [
     "Topic :: Terminals",
     "Topic :: System :: Shells",
 ]
-dependencies = [
-]
+dependencies = []
 
 [project.urls]
 Homepage = "https://github.com/wwade/jobrunner-git"
@@ -39,29 +38,17 @@ Source = "https://github.com/wwade/jobrunner-git"
 [project.entry-points."wwade.jobrunner"]
 jobrunner_git_project = "jobrunner_git.project"
 
-[tool.poetry]
-version = "0.0.0"
-packages = [{include = "jobrunner_git"}]
-
-[tool.poetry.dependencies]
-python = "^3.9"
-
-[tool.poetry.group.dev.dependencies]
-black = "25.11.0"
-flake8 = "7.3.0"
-isort = {version = "7.0.0", python = ">=3.10"}
-modernize = {version = "0.8.0", python = ">=3.9,<4.0"}
-mypy = "1.19.1"
-pylint = {version = "4.0.4", python = ">=3.10"}
-pytest = [
-    {version = "^8.0", python = "~3.9"},
-    {version = "^9.0.1", python = "^3.10"}
+[dependency-groups]
+dev = [
+    "black==25.11.0",
+    "flake8==7.3.0",
+    "isort==7.0.0; python_version >= '3.10'",
+    "modernize==0.8.0",
+    "mypy==1.19.1",
+    "pylint==4.0.4; python_version >= '3.10'",
+    "pytest>=8.0,<9; python_version == '3.9'",
+    "pytest>=9.0.1; python_version >= '3.10'",
 ]
 
-[tool.poetry-dynamic-versioning]
-enable = true
-vcs = "git"
-style = "semver"
-
-[tool.setuptools_scm]
-# Enable setuptools-scm for dynamic versioning
+[tool.hatch.version]
+source = "vcs"
