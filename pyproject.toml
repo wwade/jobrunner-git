@@ -43,8 +43,8 @@ dev = [
     "modernize==0.8.0",
     "mypy==1.19.1",
     "ruff==0.15.6",
-    "pytest>=6.0,<7.0; python_version == '3.9'",
-    "pytest>=7.0,<8.0; python_version >= '3.10'",
+    "pytest>=9,<9.1; python_version == '3.9'",
+    "pytest>=9,<9.1; python_version >= '3.10'",
 ]
 
 [tool.hatch.version]
