@@ -4,6 +4,7 @@
     "config:recommended"
   ],
   "baseBranches": ["renovate-wip"],
+  "splitPythonMarkers": true,
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
